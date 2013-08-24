@@ -29,5 +29,14 @@
             }
             
         }
+
+        public Purchase SelectProduct(string productDescription)
+        {
+            var product = AvailableProducts[productDescription];
+            var change = Amount - product.Cost;
+            Amount = 0;
+
+            return new Purchase(product, change);
+        }
     }
 }

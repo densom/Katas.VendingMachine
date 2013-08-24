@@ -42,10 +42,34 @@ namespace Katas.VendingMachine.Tests
         [Test]
         public void InsertingExactAmountAndSelectingGum_SetsAmountBackToZero()
         {
-            
+            var product = new Product("Gum", .50m);
+            var vm = new VendingMachine(product);
+
+            vm.InsertCoin(.25m, .25m);
+
+            vm.SelectProduct("Gum");
+
+            Assert.That(vm.Amount, Is.EqualTo(0));
 
         }
 
-        
+        [Test]
+        public void SelectingProduct_WithChange()
+        {
+            const string productDescription = "Chips";
+
+            var product = new Product(productDescription, .40m);
+            var vm = new VendingMachine(product);
+
+            vm.InsertCoin(.25m, .25m);
+
+            var purchase = vm.SelectProduct(productDescription);
+
+            Assert.That(purchase.Product.Description, Is.EqualTo(productDescription));
+            Assert.That(purchase.Change, Is.EqualTo(.10m));
+            Assert.That(vm.Amount, Is.EqualTo(0));
+
+        }
+       
     }
 }
