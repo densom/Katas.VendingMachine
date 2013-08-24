@@ -8,7 +8,20 @@ namespace Katas.VendingMachine
 
         public Product this[string description]
         {
-            get { return _products[description]; }
+            get
+            {
+                return GetProduct(description);
+            }
+        }
+
+        private Product GetProduct(string description)
+        {
+            if (!_products.ContainsKey(description))
+            {
+                return null;
+            }
+
+            return _products[description];
         }
 
         internal void Add(Product product)

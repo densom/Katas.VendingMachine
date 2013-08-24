@@ -70,6 +70,22 @@ namespace Katas.VendingMachine.Tests
             Assert.That(vm.Amount, Is.EqualTo(0));
 
         }
+
+        [Test]
+        public void SelectingProduct_OutOfStock()
+        {
+            var product = new Product("Chips", .40m);
+            var vm = new VendingMachine(product);
+
+            vm.InsertCoin(.25m, .25m);
+
+            var purchase = vm.SelectProduct("Gum");
+
+            Assert.That(purchase.Change, Is.EqualTo(0));
+            Assert.That(purchase.Product, Is.EqualTo(null));
+            Assert.That(vm.Display, Is.EqualTo("Make Another Selection"));
+
+        }
        
     }
 }
