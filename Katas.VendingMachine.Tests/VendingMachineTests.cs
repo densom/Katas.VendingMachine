@@ -86,6 +86,23 @@ namespace Katas.VendingMachine.Tests
             Assert.That(vm.Display, Is.EqualTo("Make Another Selection"));
 
         }
+
+        [Test]
+        public void SelectingProduct_WithoutEnoughCredit()
+        {
+            var product = new Product("Nuts", .85m);
+            var vm = new VendingMachine(product);
+
+            vm.InsertCoin(.25m, .25m, .25m);
+
+            var purchase = vm.SelectProduct("Nuts");
+
+            Assert.That(purchase.Product, Is.EqualTo(null));
+            Assert.That(purchase.Change, Is.EqualTo(0));
+            Assert.That(vm.Amount, Is.EqualTo(.75m));
+            Assert.That(vm.Display, Is.EqualTo("Deposit Additional 0.10"));
+
+        }
        
     }
 }

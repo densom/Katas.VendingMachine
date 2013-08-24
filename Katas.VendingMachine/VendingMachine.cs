@@ -2,8 +2,7 @@
 {
     public class VendingMachine
     {
-        Products _products = new Products();
-        private string _display = string.Empty;
+        readonly Products _products = new Products();
 
         public VendingMachine(Product product)
         {
@@ -24,7 +23,8 @@
 
         public string Display
         {
-            get { return _display; }
+            get;
+            private set;
         }
 
         public void InsertCoin(params decimal[] coinAmounts)
@@ -38,18 +38,41 @@
 
         public Purchase SelectProduct(string productDescription)
         {
-            var product = AvailableProducts[productDescription];
-
-            if (product == null)
+            if (!IsProductFound(productDescription))
             {
-                _display = "Make Another Selection";
+                Display = "Make Another Selection";
                 return new EmptyPurchase();
             }
 
-            var change = Amount - product.Cost;
-            Amount = 0;
+            var product = AvailableProducts[productDescription];
+
+            if (product.Cost > Amount)
+            {
+                Display = string.Format("Deposit Additional {0}", product.Cost - Amount);
+                return new EmptyPurchase();
+            }
+
+            var change = CalculateChange(product);
+            
+            ResetAmount();
 
             return new Purchase(product, change);
+        }
+
+        private void ResetAmount()
+        {
+            Amount = 0;
+        }
+
+        private bool IsProductFound(string productDescription)
+        {
+            var product = AvailableProducts[productDescription];
+            return product != null;
+        }
+
+        private decimal CalculateChange(Product product)
+        {
+            return Amount - product.Cost;
         }
     }
 }
