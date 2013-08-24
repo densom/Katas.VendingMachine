@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katas.VendingMachine", "Katas.VendingMachine\Katas.VendingMachine.csproj", "{3C439C3F-CC49-45B3-B7C4-9553C4945938}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Katas.VendingMachine.Tests", "Katas.VendingMachine.Tests\Katas.VendingMachine.Tests.csproj", "{A28B5EFC-0B4E-4869-A8B9-067F3F307285}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C439C3F-CC49-45B3-B7C4-9553C4945938}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C439C3F-CC49-45B3-B7C4-9553C4945938}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C439C3F-CC49-45B3-B7C4-9553C4945938}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C439C3F-CC49-45B3-B7C4-9553C4945938}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A28B5EFC-0B4E-4869-A8B9-067F3F307285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A28B5EFC-0B4E-4869-A8B9-067F3F307285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A28B5EFC-0B4E-4869-A8B9-067F3F307285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A28B5EFC-0B4E-4869-A8B9-067F3F307285}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
